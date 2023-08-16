@@ -9,9 +9,7 @@ const getMedicalRecords = async (req, res) => {
 
     const data = await medicalHistory.find(req.query)
     console.log(data)
-    res.status(200).json("SHREE");
-    // const patients = Contact.find({user_id: req.user.id});
-    // res.status(200).json(patients);
+    res.status(200).json(data);
 };
 
 //@desc Add a new medicalHistory of a patient

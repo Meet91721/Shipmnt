@@ -1,13 +1,16 @@
 // const asyncHandler = require('express-async-handler');
 const Patient = require('../models/patientModel')
 
-//@desc Get all patients
-//@route GET /api/patients
+//@desc Get patient by username
+//@route GET /api/patient
 //@access public
-const getPatients = (req, res) => {
-    res.status(200).json("SHREE");
-    // const patients = Contact.find({user_id: req.user.id});
-    // res.status(200).json(patients);
+const getPatients = async (req, res) => {
+    const { userName } = req.body
+    if (!userName) {
+        res.status(400).send({ msg: 'User not provided' })
+    }
+    const patient = await Patient.find({ userName: userName })
+    res.status(400).send(patient)
 };
 
 //@desc Post a new patient
