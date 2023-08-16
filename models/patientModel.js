@@ -25,10 +25,10 @@ const patientSchema = mongoose.Schema({
         type: Number,
         required: [true, 'Please add user mobile number']
     },
-    medicalHistory: {
-        type: String,
-        // Will be changed soon
-    }
+    // medicalHistory: {
+    //     type: String,
+    //     // Will be changed soon
+    // }
 }
 )
 

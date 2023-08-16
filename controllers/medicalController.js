@@ -14,5 +14,19 @@ const getMedicalRecords = async (req, res) => {
     // res.status(200).json(patients);
 };
 
+//@desc Add a new medicalHistory of a patient
+//@route POST /api/medical/
+//@access public
+const postMedicalHistory = async (req, res) => {
+    const medicalData = req.body
+    medicalData.appointmentDate = Date(medicalData.appointmentDate)
+    console.log(medicalData)
+    if (!medicalData.userName || !!medicalData.diseaseName || !medicalData.appointmentDate || !medicalData.prescription || !medicalData.fees) {
+        res.status(400).json({ msg: "Every field is required" })
+    }
+    const addedData = medicalHistory.create(medicalData)
+    res.status(200).json({ msg: "Data added" });
+};
 
-module.exports = { getMedicalRecords }
+
+module.exports = { getMedicalRecords, postMedicalHistory }
